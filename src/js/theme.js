@@ -1,15 +1,16 @@
-import * as map from '../../src/components/map/default/default';
+import UIkit from 'uikit';
+//import * as map from '../components/map/default/default';
 
 let mapContainer = document.getElementById('map-default');
 if (mapContainer) {
     map.initMap(mapContainer);
 }
 
-import * as video from '../../src/components/video/default/default';
+//import * as video from '../components/video/default/default';
 
-video.init();
+//video.init();
 
-$(function () {
+//$(function () {
 
     /*
      * 1 - Mask & Validation
@@ -20,9 +21,9 @@ $(function () {
     // 1
     // ========================================================================
 
-    $('[type="tel"]').mask('(000) 000-0000');
+    //$('[type="tel"]').mask('(000) 000-0000');
 
-    $.validator.addMethod("lettersonly", function (value, element) {
+    /*$.validator.addMethod("lettersonly", function (value, element) {
         return this.optional(element) || /^[a-zA-ZçÇğĞıİöÖşŞüÜ\s]*$/.test(value);
     });
 
@@ -70,7 +71,7 @@ $(function () {
         submitHandler: function (form) {
             form.submit();
         }
-    });
+    });*/
 
     // 2 - Swiper Default
     // ========================================================================
@@ -97,4 +98,4 @@ $(function () {
 
     tabNav.width(total + padding + 4);*/
 
-});
+//});
