@@ -5,9 +5,7 @@
     "clean": "rimraf ./dist/*",
     "icon": "cd node_modules/uikit && yarn && yarn compile-less && yarn compile-js && cd ../.."
   },
-  "dependencies": {
-    "html-loader": "^0.5.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
@@ -19,6 +17,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "glob": "^7.1.2",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",

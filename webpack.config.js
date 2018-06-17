@@ -50,7 +50,8 @@ if (!isProd) {
         new webpack.NamedModulesPlugin(),
         new WriteFilePlugin({
             test: /images/
-        }))
+        })
+    )
 }
 
 module.exports = [{
@@ -59,9 +60,6 @@ module.exports = [{
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/theme.js',
-        library: 'UIkit',
-        libraryExport: 'default',
-        libraryTarget: 'umd'
     },
     module: {
         rules: [
@@ -75,7 +73,7 @@ module.exports = [{
                 options: {
                     presets: ['es2015']
                 },
-                //exclude: /node_modules/
+                exclude: /node_modules/
             },
             {
                 test: /\.pug$/,
@@ -104,7 +102,7 @@ module.exports = [{
         overlay: true,
         //inline: true,
         historyApiFallback: true,
-        contentBase: ['./src/pages/'],
+        contentBase: './src/pages/',
         watchContentBase: true
     },
     plugins: plugins
