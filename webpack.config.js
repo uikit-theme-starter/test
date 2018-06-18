@@ -1,16 +1,16 @@
-const HWP = require('html-webpack-plugin');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const ETWP = require('extract-text-webpack-plugin');
+const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const glob = require('glob');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const WriteFilePlugin = require('write-file-webpack-plugin');
+const copyWebpackPlugin = require('copy-webpack-plugin');
+const writeFilePlugin = require('write-file-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 const mode = isProd ? 'production' : 'development';
 
 const cssDev = ['style-loader', 'css-loader', 'less-loader'];
-const cssProd = ETWP.extract({
+const cssProd = extractTextWebpackPlugin.extract({
     fallback: 'style-loader',
     use: [
         'css-loader',
@@ -22,7 +22,7 @@ const cssUse = isProd ? cssProd : cssDev;
 let pugs = glob.sync('./src/pages/*.pug');
 const plugins = [];
 pugs.forEach((val) => {
-    plugins.push(new HWP({
+    plugins.push(new htmlWebpackPlugin({
         filename: path.basename(val, '.pug') + '.html',
         hash: true,
         template: val
@@ -30,12 +30,12 @@ pugs.forEach((val) => {
 });
 
 plugins.push(
-    new ETWP({
+    new extractTextWebpackPlugin({
         filename: 'css/theme.css',
         disable: !isProd,
         allChunks: true
     }),
-    new CopyWebpackPlugin([
+    new copyWebpackPlugin([
         {
             from: "./src/images/iconset/*.svg",
             to: "../node_modules/uikit/src/images/icons/[name].[ext]",
@@ -48,7 +48,7 @@ if (!isProd) {
     plugins.push(
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
-        new WriteFilePlugin({
+        new writeFilePlugin({
             test: /images/
         })
     )

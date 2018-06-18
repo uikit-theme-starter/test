@@ -1,9 +1,7 @@
-import 'uikit/src/less/uikit.less'
 import './less/theme.less';
 
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
-
 
 UIkit.use(Icons);
 
